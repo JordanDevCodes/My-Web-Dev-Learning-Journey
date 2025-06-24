@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS List</title>
+    <style>
+        nav ul li {
+            margin: 0;
+            padding: 0;
+            list-style: devanagari;
+            background-color: yellow;
+            border-radius: 10px;
+            list-style-position: inside;
+            border: 2px solid black;
+            list-style-image: url(zoro.gif);
+        }
+
+        div {
+            display: inline-block;
+            width: 250px;
+            border: 2px solid blue;
+            border-radius: 50px;
+            background-color: bisque;
+            text-shadow: 2px 3px 4px green;
+            box-shadow: 5px 4px 6px 6px red;
+        }
+
+        div ul li {
+            list-style: square;
+            color: blue;
+            font-size: 20px;
+            font-weight: bold;
+            text-decoration: underline;
+            text-transform: uppercase;
+            margin-left: 10px;
+            padding: 5px;
+        }
+
+        .list ul li {
+            list-style: devanagari;
+            list-style-type: "😁";
+        }
+        .class ul li { list-style: none;
+           display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li>Home </li>
+            <li>About </li>
+            <li>Contact </li>
+            <li>Name </li>
+        </ul>
+
+    </nav>
+    <div>
+        <ul>
+            <li>Jordan</li>
+            <li style="font-style: italic;">Joel</li>
+    </div>
+
+    <div class="list" style=" display: block; "  ">
+        <ul>
+            <li>John</li>
+            <li>Jane</li>
+        </ul>
+
+        <div class="class" style=" display: flex; color: blueviolet;">
+            <ul style="display: flex; list-style: circle; border: 2px solid;" ;>
+                <li>home</li>
+                <li>About
+                    <li>Contact</li>
+                </li>
+            </ul>
+        </div>
+</body>
+
+</html>

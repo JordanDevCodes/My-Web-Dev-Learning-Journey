@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solved Exercise 3</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+       
+        
+        body {
+            background-color: rgb(177, 171, 171);
+            display: flex;
+            /* display: flex; */
+            justify-content: center;
+            /* align-content: end; */
+            align-items: center;
+            height: 100vh;
+        }
+
+        .Card { align-self: center;
+            width: 230px;
+            background-color: white;
+            border-radius: 7px;
+            padding: 0 0 34px 0;
+            margin: 4px;
+            /* margin-top: 10px; */
+            height: 430px ;
+            box-shadow: 5px 5px 20px black;
+        }
+
+        .image { text-align: center;
+            padding: 5px;
+        }
+        
+        .image img {
+            box-shadow:  5px 5px 29px grey;
+            border-radius: 7px;
+        }
+
+        .content {  padding: 7px 13px; 
+ font-size: 15px;}
+
+        .capsule nav {
+            list-style: none;
+            display: flex;
+            gap: 13px;
+            font-size: 14px;
+        }
+
+        .capsule nav li {font-family: 'Baloo Bhai 2', sans-serif; 
+;
+            border: 1px solid rgb(167, 164, 164);
+            border-radius: 9px;
+            padding: 2px;
+        }
+
+        .capsule { margin-top: 6PX;
+            display: flex; padding: 0 28px 0 14px;
+        }
+
+
+        .button{
+            text-align: center;
+        }
+        .button button{ margin-top: px;
+            padding: 12px 18px;
+            border-radius:  15px;
+            background-color: rgb(130, 202, 250);
+            border: none;
+            color: blue;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .button button:hover{
+            background-color: aquamarine;
+            color: yellow;
+        }
+
+        p{
+            font-size: 13px;
+            color: gray;
+        }
+/* .button{ margin-top: 129px} */
+
+.Card {
+    transform: scale(1.2);
+    transform-origin: center;
+}
+
+       
+    </style>
+</head>
+
+<body>
+    <div class="Card" >
+
+        <div class="image">
+
+            <img width="208"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTLYSWkfi5VwHY9UUi7SeChhP7FHbsZAiOfmWvPNJ3ZnFl-b5LlN23EShieIcpYHFHv4g&usqp=CAU"
+                alt="Sally The Queen">
+        </div>
+        <div class="capsule">
+            <nav>
+                <li>Sally</li>
+                <li>Queen</li>
+            </nav>
+        </div>
+        <div class="content">
+            <h2> Sally The Queen</h2>
+            <p>
+                Sally is my adorable pet dog. She's a fluffy white Pomeranian who feels as soft as cotton. With her well-behaved nature and cute little face, she brings so much joy to our home. 
+            </p>
+
+        </div>
+        <div class="button"  >
+            <a href="https://www.instagram.com/sally_the_queeen_/#" style="background-color: rgb(178, 224, 255); padding: 8px; color: blue; text-decoration: none; ; border-radius: 23px; font-weight: bold;"> Her I'd</a>
+        </div>
+
+    
+    </div>
+    <style>
+        /* .Card{margin: 2px; box-sizing: border-box;} */
+        .button{margin-top: 10px;}
+        @media only screen and (max-width: 455px
+        ){
+            body{ display: flex;
+            flex-direction: column; justify-content: center; margin: auto;  } .Card{ margin: auto; width: 280px; margin-top: 20px; height: 490px; margin-bottom: 20px;}
+        .image img{ width: 260px;}
+    .button{margin-top: 10px;} }
+    </style>
+</body>
+
+</html>

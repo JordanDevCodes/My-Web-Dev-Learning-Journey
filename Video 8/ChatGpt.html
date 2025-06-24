@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Searchable Dropdown - Indian Cities</title>
+  <style>
+    .dropdown-container {
+      width: 250px;
+      position: relative;
+      font-family: Arial, sans-serif;
+    }
+
+    #searchInput {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .dropdown-list {
+      border: 1px solid #ccc;
+      border-top: none;
+      max-height: 200px;
+      overflow-y: auto;
+      display: none;
+      position: absolute;
+      width: 100%;
+      background-color: white;
+      z-index: 10;
+    }
+
+    .dropdown-list div {
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .dropdown-list div:hover {
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="dropdown-container">
+  <input type="text" id="searchInput" placeholder="Search for a city...">
+  <div id="dropdownList" class="dropdown-list"></div>
+</div>
+
+<script>
+  const cities = [
+    "Mumbai", "Delhi", "Bangalore", "Hyderabad", "Ahmedabad", "Chennai", "Kolkata",
+    "Pune", "Jaipur", "Surat", "Lucknow", "Kanpur", "Nagpur", "Indore", "Bhopal",
+    "Patna", "Vadodara", "Ludhiana", "Agra", "Nashik"
+  ];
+
+  const searchInput = document.getElementById('searchInput');
+  const dropdownList = document.getElementById('dropdownList');
+
+  function filterCities() {
+    const query = searchInput.value.toLowerCase();
+    dropdownList.innerHTML = '';
+    const filtered = cities.filter(city => city.toLowerCase().includes(query));
+
+    filtered.forEach(city => {
+      const div = document.createElement('div');
+      div.textContent = city;
+      div.onclick = () => {
+        searchInput.value = city;
+        dropdownList.style.display = 'none';
+      };
+      dropdownList.appendChild(div);
+    });
+
+    dropdownList.style.display = filtered.length ? 'block' : 'none';
+  }
+
+  searchInput.addEventListener('input', filterCities);
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.dropdown-container')) {
+      dropdownList.style.display = 'none';
+    }
+  });
+</script>
+
+</body>
+</html>

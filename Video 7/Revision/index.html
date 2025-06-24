@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        div{ border-radius: 20px; background-color: skyblue; border: 2px solid; margin: 100px; letter-spacing: 1px; font-size: 30px; }
+        body{ box-shadow: 5px 5px 5px greenyellow;}
+    </style>
+</head>
+
+<body style="background-color: red; border: 20px solid; border-radius: 20px; margin: 30px; padding: 20px; box-shadow: 5px 5px 5px greenyellow; text-shadow: 2px 2px 6px greenyellow;">
+    <div style="text-align: center; border: 0px ; background-color: red;">
+
+        <h1
+            style="display: inline-block; background-color: yellow; text-align: center; border: 2px solid ; border-radius: 15px; ">
+            Form To Apply </h1>
+    </div>
+    <div>
+
+        <form action="Post"></form>
+        <label for="name"> Name </label>
+        <input type="text" name="name" id="name" placeholder="Your name" required>
+        <label for="name "> Enter Your Username </label>
+    </div>
+
+    <div>
+        <input type="radio" id="male" name="gender" value="male" autofocus>
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female" autofocus>
+
+        <label for="female">Female</label>
+        </div>
+
+    <div>
+        <label for="email"> Email </label>
+        <input type="email" name="email" id="email" placeholder="Your email" required>
+
+        </div>
+
+        <div>
+            <input type="checkbox" id="subscribe" name="subscribe" value="yes">
+            <label for="subscribe">Subscribe to newsletter</label>
+        </div>
+<div>
+        <label for="country">Country</label>
+        <select name="country" id="country">
+            <option value="usa">USA</option>
+            <option value="canada">Canada</option>
+            <option value="uk">UK</option>
+            <option value="australia">Australia</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="comments">Comments:</label><br>
+        <textarea id="comments" name="comments" rows="4" cols="50" placeholder=" WRITE Your comments here..." style="background-color: yellow;"></textarea>
+    </div>
+
+    <div>
+        <button type="submit" style="color: green; background-color: antiquewhite;">Submit</button>
+        
+    </div>
+    <button type="reset"> Reset Form</button>
+</body>
+
+</html>

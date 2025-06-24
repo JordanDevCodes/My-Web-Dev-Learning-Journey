@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz
+        - Revision</title>
+    <style>
+        form div { background-color: red;
+            margin: 50px;
+            margin-bottom: 100px;
+            padding: 23px;
+            
+        }
+    </style>
+</head>
+
+<body style="font-size: 36px; background-color: yellow;">
+    <div style="text-align: center;">
+
+        <h1 style=" text-align: center; background-color: skyblue; display: inline-block; border-radius: 30px;"> Revision Quiz </h1>
+    </div>
+        <form id="quizForm">
+        <div>
+            <label for="question1">1. What is the capital of France?</label><br>
+            <input type="radio" name="question1" value="A"> A) Berlin<br>
+            <input type="radio" name="question1" value="B"> B) Madrid<br>
+            <input type="radio" name="question1" value="C"> C) Paris<br>
+            <input type="radio" name="question1" value="D"> D) Rome<br>
+        </div>
+
+        <div>
+            <label for="question2">2. What is 2 + 2?</label><br>
+            <input type="radio" name="question2" value="A"> A) 3<br>
+            <input type="radio" name="question2" value="B"> B) 4<br>
+            <input type="radio" name="question2" value="C"> C) 5<br>
+            <input type="radio" name="question2" value="D"> D) 6<br>
+        </div>
+
+        <div>
+            <label for="question3">3. Who wrote 'Romeo and Juliet'?</label><br>
+            <input type="radio" name="question3" value="A"> A) Mark Twain<br>
+            <input type="radio" name="question3" value="B"> B) Charles Dickens<br>
+            <input type="radio" name="question3" value="C"> C) William Shakespeare<br>
+            <input type="radio" name="question3" value="D"> D) Jane Austen<br>
+        </div>
+
+        <button type="submit">Submit</button>
+
+
+        <hr>
+
+        <form action="post">
+            <span style="text-align: center; display: block; background-color: lightblue; padding: 20px; border-radius: 10px;">
+
+                <div>
+
+                    <label for=" Name "> Enter Your name</label>
+                    <input type="text" name="name" id="Name" placeholder="Your name" required>
+                    <br>
+                    <label for="Email"> Your Email</label>
+                    <input type="email" name="email" id="Email" placeholder="Your email" required>
+                </div>
+
+                <div>
+
+                    <input type="radio" name="gender" id="Male " value="Male ">
+                    <label for="Male"> Male </label>
+                    <input type="radio" name=" gender" id="female" value="female">
+                    <label for="female"> Female </label>
+                </div>
+                
+                
+            </div>
+            <div>
+                <label for="feedback"> Select Your Country </label>
+                <select name="Country" id=" Country">
+                    
+                    <option value="Usa"> USA</option>
+                    <option value="India">India</option>
+                    <option value="Pak">Pakistan</option>
+                </select>
+            </div>
+            <div>
+                <input type="checkbox" name="terms" id="terms" required>
+                <label for="terms"> I agree to the terms and conditions </label>
+            </div>
+            <div>
+                <label for="Feedback"> Write Your Feedback</label>
+                <br>
+                <textarea name="Feedback" id="Feedback" rows="4" cols="50"> Write your feedback here....</textarea>
+            </div>
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+            </span>
+        </form>
+
+</body>
+
+</html>

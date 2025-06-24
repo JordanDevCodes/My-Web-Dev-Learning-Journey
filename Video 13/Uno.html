@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Simple UNO: Player vs AI</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    margin: 0; padding: 20px;
+  }
+  h1 {
+    margin-bottom: 10px;
+  }
+  #game {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  #playerHand, #aiHand {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 10px 0;
+    min-height: 120px;
+  }
+  .card {
+    width: 60px;
+    height: 90px;
+    margin: 5px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 90px;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 0 8px rgba(0,0,0,0.6);
+    color: white;
+    text-align: center;
+  }
+  .Red { background: #e74c3c; }
+  .Green { background: #27ae60; }
+  .Blue { background: #2980b9; }
+  .Yellow { background: #f1c40f; color: black; }
+  .disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  #discardPile, #drawPile {
+    display: inline-block;
+    width: 80px;
+    height: 120px;
+    margin: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.7);
+    font-size: 30px;
+    line-height: 120px;
+    user-select: none;
+  }
+  #discardPile {
+    background: #ecf0f1;
+    color: black;
+  }
+  #drawPile {
+    background: #34495e;
+    cursor: pointer;
+  }
+  #message {
+    margin: 20px 0;
+    font-size: 20px;
+    min-height: 24px;
+  }
+  #controls {
+    margin-top: 10px;
+  }
+  button {
+    padding: 10px 18px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background: #27ae60;
+    color: white;
+    margin: 0 10px;
+  }
+  button:hover {
+    background: #219150;
+  }
+</style>
+</head>
+<body>
+
+<h1>Simple UNO: Player vs AI</h1>
+
+<div id="game">
+  <div><strong>AI's Hand</strong></div>
+  <div id="aiHand"></div>
+
+  <div>
+    <div id="discardPile" title="Discard Pile"></div>
+    <div id="drawPile" title="Draw Pile">Draw</div>
+  </div>
+
+  <div><strong>Your Hand</strong></div>
+  <div id="playerHand"></div>
+
+  <div id="message"></div>
+
+  <div id="controls">
+    <button id="drawButton">Draw Card</button>
+    <button id="restartButton" style="display:none;">Restart Game</button>
+  </div>
+</div>
+
+<script>
+(() => {
+  // Card colors and numbers for simple deck
+  const colors = ["Red", "Green", "Blue", "Yellow"];
+  const numbers = [...Array(10).keys()]; // 0 to 9
+
+  let deck = [];
+  let playerHand = [];
+  let aiHand = [];
+  let discardPile = [];
+  let currentTurn = "player"; // player or ai
+  let gameOver = false;
+
+  const playerHandDiv = document.getElementById("playerHand");
+  const aiHandDiv = document.getElementById("aiHand");
+  const discardPileDiv = document.getElementById("discardPile");
+  const drawPileDiv = document.getElementById("drawPile");
+  const messageDiv = document.getElementById("message");
+  const drawButton = document.getElementById("drawButton");
+  const restartButton = document.getElementById("restartButton");
+
+  function createDeck() {
+    deck = [];
+    // Create cards - 1 each of 0-9 per color (simplified)
+    for (let color of colors) {
+      for (let num of numbers) {
+        deck.push({color, number: num});
+      }
+    }
+    // Shuffle deck
+    for (let i = deck.length -1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i+1));
+      [deck[i], deck[j]] = [deck[j], deck[i]];
+    }
+  }
+
+  function drawCard() {
+    if (deck.length === 0) {
+      // reshuffle discard pile except top card
+      if (discardPile.length > 1) {
+        const top = discardPile.pop();
+        deck = discardPile.splice(0);
+        discardPile = [top];
+        shuffleDeck();
+        return deck.pop();
+      } else {
+        return null; // no cards left to draw
+      }
+    }
+    return deck.pop();
+  }
+
+  function shuffleDeck() {
+    for (let i = deck.length -1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i+1));
+      [deck[i], deck[j]] = [deck[j], deck[i]];
+    }
+  }
+
+  function canPlay(card, topCard) {
+    return card.color === topCard.color || card.number === topCard.number;
+  }
+
+  function renderHands() {
+    // Player hand
+    playerHandDiv.innerHTML = "";
+    playerHand.forEach((card, i) => {
+      const cardDiv = document.createElement("div");
+      cardDiv.className = `card ${card.color}`;
+      cardDiv.textContent = card.number;
+      if (currentTurn === "player" && canPlay(card, discardPile[discardPile.length-1])) {
+        cardDiv.style.cursor = "pointer";
+        cardDiv.onclick = () => playCard("player", i);
+      } else {
+        cardDiv.style.cursor = "default";
+        cardDiv.onclick = null;
+      }
+      playerHandDiv.appendChild(cardDiv);
+    });
+
+    // AI hand (hidden cards)
+    aiHandDiv.innerHTML = "";
+    for (let i = 0; i < aiHand.length; i++) {
+      const cardBack = document.createElement("div");
+      cardBack.className = "card";
+      cardBack.style.background = "#7f8c8d";
+      cardBack.textContent = "?";
+      aiHandDiv.appendChild(cardBack);
+    }
+
+    // Discard pile top card
+    const top = discardPile[discardPile.length -1];
+    discardPileDiv.textContent = top ? `${top.number}` : "";
+    discardPileDiv.className = `card ${top ? top.color : ""}`;
+
+    // Draw pile count
+    drawPileDiv.textContent = `Draw (${deck.length})`;
+
+    // Disable draw button if not player's turn or game over
+    drawButton.disabled = currentTurn !== "player" || gameOver;
+  }
+
+  function playCard(player, cardIndex) {
+    if (gameOver) return;
+
+    let hand = player === "player" ? playerHand : aiHand;
+    const card = hand[cardIndex];
+    const topCard = discardPile[discardPile.length -1];
+
+    if (!canPlay(card, topCard)) {
+      if (player === "player") {
+        alert("You cannot play this card!");
+      }
+      return;
+    }
+
+    // Play card
+    hand.splice(cardIndex, 1);
+    discardPile.push(card);
+
+    renderHands();
+
+    if (hand.length === 0) {
+      gameOver = true;
+      messageDiv.textContent = player === "player" ? "You Win! 🎉" : "AI Wins! 🤖";
+      drawButton.disabled = true;
+      restartButton.style.display = "inline-block";
+      return;
+    }
+
+    // Switch turn
+    currentTurn = player === "player" ? "ai" : "player";
+    messageDiv.textContent = currentTurn === "player" ? "Your turn" : "AI's turn";
+
+    if (currentTurn === "ai" && !gameOver) {
+      setTimeout(aiPlay, 1000);
+    }
+  }
+
+  function aiPlay() {
+    if (gameOver) return;
+
+    const topCard = discardPile[discardPile.length -1];
+    let playableCards = aiHand.filter(card => canPlay(card, topCard));
+
+    if (playableCards.length > 0) {
+      // Play random valid card
+      let cardToPlay = playableCards[Math.floor(Math.random() * playableCards.length)];
+      let cardIndex = aiHand.indexOf(cardToPlay);
+      playCard("ai", cardIndex);
+    } else {
+      // Draw card if no playable
+      let newCard = drawCard();
+      if (newCard) {
+        aiHand.push(newCard);
+        renderHands();
+
+        // Check if newly drawn card playable immediately
+        if (canPlay(newCard, topCard)) {
+          let cardIndex = aiHand.length -1;
+          setTimeout(() => playCard("ai", cardIndex), 1000);
+        } else {
+          currentTurn = "player";
+          messageDiv.textContent = "Your turn";
+          renderHands();
+        }
+      } else {
+        // No cards to draw - skip turn
+        currentTurn = "player";
+        messageDiv.textContent = "Your turn";
+        renderHands();
+      }
+    }
+  }
+
+  function playerDraw() {
+    if (gameOver || currentTurn !== "player") return;
+
+    let card = drawCard();
+    if (card) {
+      playerHand.push(card);
+      renderHands();
+      messageDiv.textContent = "You drew a card. If playable, click it or pass turn.";
+    } else {
+      messageDiv.textContent = "No cards left to draw.";
+    }
+  }
+
+  function startGame() {
+    gameOver = false;
+    currentTurn = "player";
+    messageDiv.textContent = "Your turn";
+
+    createDeck();
+    playerHand = [];
+    aiHand = [];
+    discardPile = [];
+
+    // Deal 7 cards each
+    for (let i = 0; i < 7; i++) {
+      playerHand.push(drawCard());
+      aiHand.push(drawCard());
+    }
+
+    // Start discard pile with one card
+    discardPile.push(drawCard());
+
+    drawButton.disabled = false;
+    restartButton.style.display = "none";
+
+    renderHands();
+  }
+
+  drawButton.onclick = playerDraw;
+  restartButton.onclick = startGame;
+
+  startGame();
+
+})();
+</script>
+
+</body>
+</html>

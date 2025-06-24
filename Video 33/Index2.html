@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  :root {
+
+    /* --primary-color: deeppink */
+
+
+    ---color: red;
+    ---seccolor: yellow;
+    
+    
+    --main-radius: 10px;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: var(---color);
+  }
+
+  .navigation {
+    font-size: 23px;
+    background-color: black;
+    color: white;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navigation nav {
+    list-style: none;
+    display: flex;
+    gap: 23px;
+    padding: 23px;
+  }
+
+  .navigation nav li {
+    border-radius: var(--main-radius);
+  }
+
+  .navigation nav li:first-child {
+    background-color: var(---color);
+  }
+
+  .navigation nav li:nth-child(3) {
+    background-color: var(---seccolor);
+    color: var(---color);
+  }
+
+  .navigation nav li:nth-child(4) {
+    background-color: var(---color);
+    color: var(---seccolor);
+  }
+</style>
+
+<body>
+  <div class="navigation">
+    <nav>
+      <li>Home</li>
+      <li>About</li>
+      <li>Contact</li>
+      <li>Services</li>
+    </nav>
+  </div>
+</body>
+
+</html>

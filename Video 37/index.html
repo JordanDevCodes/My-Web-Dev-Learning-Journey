@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        :root{
+            --primary-color: #f562c9;
+            --text-color: white;
+            --secondary-color: #22a501f8;
+            --my-border: 2px solid rgb(255, 255, 255);
+        }
+
+        *{margin: 0;padding: 0;}
+
+        body{background-color: rgb(0, 0, 0); height:  1080px
+            ;}
+
+        header{ position: sticky; top: 0px;  margin-top: 20px;}
+        nav {
+    list-style: none;
+    background-color: var(--primary-color);
+    padding: 23px;
+    position: sticky;
+    top: 0;
+    left: 0px;
+    z-index: 1000;
+}
+
+
+ul li{list-style: none; display: inline; padding: 23px;}
+        nav ul li a{ text-decoration: none; color: var(--text-color);}
+
+        main { background-color: var(--secondary-color); 
+    display: flex; margin: 20px;
+    justify-content: space-between;
+    padding: 30px 30px; /* Optional: adds space from screen edges */
+}
+
+
+          
+        .first
+        { border: 1px solid black; height: 633px; width: 433px; margin-top: 20px; background-color: #f58989f8 }
+        .second
+        { border: 1px solid black; height: 633px; width: 433px; margin-top: 20px; background-color: rgb(0, 204, 255); }
+
+
+        footer{ text-align: center; margin-top: 50px; }
+        footer div h1 { color: var(--text-color); border: var(--my-border); padding: 23px; border-radius: 23px; display: inline; }
+
+        .circle {
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+  display: inline-block;
+ position: fixed; bottom: 23px; right: 18px;
+
+}
+@media only screen and (max-width: 755px
+) { 
+    .box{margin: 9px; height: 200px;}
+
+    footer{padding: 0; text-align: center; ;}
+    .footer{padding: 13px;  border: var(--my-border); border-radius: 23px;}
+    .footer h1{ padding: 9px;  font-size: 18px; border: 0px solid white; border-radius: 13px;}
+}
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">Services</a></li>
+                <li><a href="">Info</a></li>
+                <li><a href="">Feedback</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="first box"></div>
+
+        <div class="second box"></div>
+
+        
+    </main>
+
+    <footer>
+        <div class="footer">
+            <h1>
+
+                Welcome to this Sigma Web Development Course
+            </h1>
+            
+            </div>
+
+            <div class="circle">
+
+                <p> &#9679;</p>
+            </div>
+    </footer>
+
+</body>
+</html>

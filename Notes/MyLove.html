@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>For My Dearest Neha</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            padding: 40px;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        .letter {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            padding: 30px;
+            max-width: 800px;
+            margin: auto;
+            position: relative;
+            z-index: 2;
+        }
+        h1 {
+            color: #e91e63;
+            font-size: 36px;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        .heart {
+            color: red;
+            font-size: 24px;
+        }
+        .footer {
+            margin-top: 40px;
+            font-size: 20px;
+            color: #e91e63;
+        }
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .heart-shape {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: red;
+            transform: rotate(45deg);
+            animation: floatUp 8s linear infinite;
+        }
+        .heart-shape::before,
+        .heart-shape::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: red;
+            border-radius: 50%;
+        }
+        .heart-shape::before {
+            top: -10px;
+            left: 0;
+        }
+        .heart-shape::after {
+            left: -10px;
+            top: 0;
+        }
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(45deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(45deg);
+                opacity: 0;
+            }
+        }
+        @keyframes popHeart {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+        .animated-heart {
+            animation: popHeart 1.5s infinite;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts" id="hearts-container"></div>
+
+    <div class="letter">
+        <h1>To My Sweetest Neha <span class="heart animated-heart">♥</span></h1>
+        <p>
+            From the very moment we met, something in my heart knew you were special.
+            Over the last 2.5 years, you've become my closest friend, my biggest supporter,
+            and the person I cherish more than words can express.
+        </p>
+        <p>
+            With every smile you give, my world becomes brighter. Your laughter is a melody
+            that I could listen to forever, and your presence is the peace I never knew I needed.
+        </p>
+        <p>
+            I never believed in soulmates until I found you. The way we connect, understand,
+            and care for each other is something rare and beautiful. You make me feel seen, heard,
+            and truly loved.
+        </p>
+        <p>
+            Neha, I love you. Not just as a best friend, but as someone I want to hold close to my heart forever.
+            If love is a journey, then I want to walk every step of it with you.
+        </p>
+        <p>
+            You are my sunshine, my heart's favorite song, and the love I never saw coming but now
+            can't live without.
+        </p>
+        <div class="footer">
+            Yours always and forever,<br>
+            Jordan <span class="heart animated-heart">💋🤗♥♥♥</span>
+        </div>
+    </div>
+
+    <script>
+        const container = document.getElementById('hearts-container');
+        const colors = ['#ff4d6d', '#ff6f91', '#ff85a2', '#ff99b3'];
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-shape');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+            heart.style.background = colors[Math.floor(Math.random() * colors.length)];
+            heart.style.zIndex = 0;
+            container.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 10000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>

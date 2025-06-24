@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Position</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .box1 {
+            background-color: aqua;
+            ;
+            /* top: 23px ; left: 23px; */
+        }
+
+        .box2 {
+            background-color: azure;
+        }
+
+        .box3 {
+            background-color: bisque;
+        }
+
+        .box4 {
+            background-color: purple;
+            z-index: 6;
+            position: relative;
+        }
+
+        .box {
+            height: 133px;
+            width: 80vw;
+            padding: 3px;
+            margin: 3px;
+            border-radius: 23px;
+            border: 2px solid black;
+        }
+
+        .box1 {
+            /* position: relative;/ */
+            position: fixed;
+            bottom: 300px;
+            right: 23px;
+            z-index: 5;
+            padding: 23px;
+        }
+
+        .boxes {
+            border: 2px solid black;
+            margin: 23px;
+            border-radius: 23px;
+            padding: 23px;
+            overflow: auto;
+        }
+
+        .ff {
+            height: 133px;
+            width: 80vw;
+            padding: 3px;
+            margin: 3px;
+            border-radius: 23px;
+            border: 2px solid black;
+        }
+
+        .first {
+            border: 2px solid black;
+            margin: 23px;
+            padding: 23px;
+            border-radius: 23px;
+            overflow: auto;
+        }
+
+
+        .one {
+            background-color: red;
+            position: sticky;
+            position: relative;
+            top: 78px;
+            z-index: 2;
+        }
+
+        .two {
+            background-color: yellow;
+            position: relative;
+            top: 59px;
+            z-index: 3;
+        }
+
+        .three {
+            background-color: blue;
+            top: 46px;
+            position: relative;
+            z-index: 4;
+        }
+
+        .four {
+            background-color: green;
+            position: relative;
+            z-index: 6;
+        }
+
+        .sticky {
+            border: 2px solid black;
+            margin: 23px;
+            padding: 23px;
+            border-radius: 23px;
+            /* overflow: auto; */
+            height: 200vh;
+        }
+
+        .frst {
+            border: 2px solid black;
+            padding: 23px;
+            border-radius: 23px;
+            height: 23vh;
+            width: 100%;
+            background-color: blanchedalmond;
+            position: sticky; top: 0px; height: 111px; z-index: 6;
+        }
+
+        .zero {
+            background-color: orange;
+            position: absolute;
+            top: 0px;
+            padding: 23px;
+            margin-bottom: 100px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- / • position: relative; • /
+
+
+    /• AS Exception: 
+    
+    transform, filter, or perspective
+    properties can also •ake an element appear as
+    transform: translate(Ø); • /
+    filter: invert(e),
+    perspective: ee••, • / -->
+
+
+    <div class="first">
+        <div class="ff zero">This is position absolute</div>
+        <div class="ff one"></div>
+        <div class="two ff"></div>
+        <div class="three ff"></div>
+        <div class="four ff"></div>
+
+    </div>
+    <div class="boxes">
+
+        <div class="box box1"> This Is A Fixed Box</div>
+        <div class="box box2"></div>
+        <div class="box box3"></div>
+        <div class="box box4"></div>
+
+    </div>
+
+    <div class="sticky">
+
+        <div class="frst">This is sticky one</div>
+    </div>
+
+    </div>
+
+
+    <div class="frst">This is sticky one and the parent is HTML or the BODY</div>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, praesentium quia voluptatibus nobis nemo
+        accusamus, molestiae atque numquam optio, quam impedit ea voluptate. Nulla sapiente ipsam odit expedita dolorem
+        dolore fuga sint possimus culpa vero. Rem iusto aliquam inventore libero nam ab laudantium, voluptatem ad et
+        dolor, fugit recusandae ducimus blanditiis quidem impedit ratione reiciendis numquam quae possimus fugiat veniam
+        maiores nisi quis accusamus? Voluptas doloribus nisi ratione esse corrupti, nemo reprehenderit libero,
+        blanditiis consequuntur eligendi culpa eaque ipsa dolorum, deleniti vero quae accusantium doloremque. Pariatur,
+        eum odio, quibusdam voluptatibus maiores suscipit rerum provident at saepe repellendus minus laborum? Ad eos,
+        similique quod impedit fugiat fugit mollitia, voluptates dolores officiis quidem totam! Nobis facere maxime
+        obcaecati pariatur ea ab rerum facilis, dolore, similique repudiandae quod odio dolores, dicta omnis corrupti
+        sunt debitis incidunt aspernatur est. Itaque pariatur dolores ab repellendus dignissimos dolore quam tempore
+        unde voluptatibus perferendis, possimus aperiam necessitatibus nisi sequi ipsum. Consequatur distinctio
+        accusantium ea dolor at quisquam. Fuga nesciunt velit veritatis quis. Tempora vero earum aliquam excepturi!
+        Velit, maxime hic alias quasi perferendis pariatur odit eos quam, cum corrupti labore veritatis iste, a officiis
+        placeat. Corrupti culpa modi veniam sit harum id eligendi quos ipsa quia omnis ipsam esse aspernatur dolore
+        officia natus ab asperiores nihil voluptatum qui animi iste, quo vitae quae ea! Delectus magnam non quaerat enim
+        porro itaque explicabo ullam nam nulla commodi at blanditiis, amet, debitis minus? Nisi, adipisci! Ea voluptatum
+        quae nulla ut sed ipsam accusantium quia consequatur? Quisquam, sit! Quis tempore consequuntur iusto illo,
+        molestias autem atque incidunt facere cupiditate assumenda vitae officia, nemo ratione quo vel aut nobis,
+        debitis ex ullam fugit asperiores nihil maiores. Nobis, quia! Fuga, necessitatibus. Voluptates vitae numquam
+        deleniti, quisquam, libero aliquam pariatur temporibus modi minima provident doloribus, soluta error voluptate
+        illum nulla mollitia cum molestiae quis? Dolore facilis iusto earum suscipit reiciendis quibusdam eveniet
+        assumenda modi vero totam quisquam quas fugiat ex est eligendi doloribus ipsa sunt quidem ab velit hic tempore,
+        maxime adipisci. Totam laboriosam eligendi, voluptatum ipsum dolorum nisi eveniet, nemo officiis aspernatur
+        dolorem alias reiciendis incidunt ex tenetur at dignissimos inventore corporis distinctio optio adipisci ducimus
+        commodi doloribus! Quisquam cupiditate ex ipsam, fugit accusamus sequi officia placeat hic porro? Voluptate
+        reprehenderit, voluptatem necessitatibus illo eos consequatur iure maiores. Alias mollitia nam voluptatum fuga
+        ab odio sapiente accusamus est, nobis quaerat excepturi, suscipit autem ipsum modi. Ipsum nam, numquam provident
+        ipsa quaerat, dolores ducimus, labore debitis suscipit adipisci dolore optio! Quod soluta illo quia quae minus
+        quam ipsa quidem quos impedit. Harum corporis vel hic id, tenetur maxime quasi aut illum eius neque animi!
+        Deleniti distinctio quis incidunt officiis aut vitae, vero autem saepe ea. Commodi maiores nulla modi ad autem
+        blanditiis, tempora iste vel eligendi porro impedit sapiente reiciendis dolorem, nihil, cum facere non corporis
+        dolorum possimus. Dolor deleniti ut architecto repudiandae reiciendis totam a, omnis, explicabo odit, eius
+        cumque autem maiores commodi. Possimus sequi, repellat esse minus aut, voluptas sit dignissimos, adipisci modi
+        amet nostrum beatae totam? Ipsum dicta incidunt quam asperiores iure recusandae, maxime facere, ipsam aliquam
+        dolores alias vero ad expedita eveniet ducimus illo doloribus ut quia nulla! A suscipit aspernatur provident,
+        eaque officia minima at ducimus, earum laboriosam nesciunt veniam tempora dolore? Laboriosam eaque porro optio
+        distinctio tempore ipsam, dolorum reprehenderit laudantium officiis tenetur commodi, placeat id expedita hic
+        sed, ullam sunt itaque dolores! Non dicta quidem exercitationem! Quos, eum necessitatibus sed saepe dolor neque
+        quia numquam ea, similique cupiditate possimus? Quod obcaecati quam vero animi? Praesentium odio a nihil ipsam
+        cumque! Dolorem, porro! Dignissimos temporibus illo similique atque nobis accusamus voluptate, tenetur nemo
+        deleniti, voluptas fuga odio animi, minima repellat odit praesentium! Animi quibusdam blanditiis, expedita iusto
+        dolore obcaecati eius et asperiores rem cum molestiae distinctio quae sequi velit, quos recusandae soluta ea,
+        deleniti neque quam! Perspiciatis illum repellat iusto temporibus qui quo magni fugiat quas magnam, quaerat
+        debitis aperiam? Exercitationem qui asperiores atque blanditiis in consequuntur tempore suscipit quasi ea quo
+        sequi ex facilis reiciendis saepe delectus nobis, repellendus quia et laboriosam rerum animi! Officiis minima
+        nisi ut tempore eveniet? Ipsam velit perspiciatis voluptatibus nemo non inventore quia deleniti necessitatibus
+        culpa facilis ut, architecto veniam quisquam tenetur aut doloremque quos temporibus nulla saepe voluptatem ullam
+        labore commodi? Atque, dolor praesentium vero cumque, reiciendis neque quasi iusto repellendus dolorum ratione
+        similique quos blanditiis ipsa nihil voluptatem voluptate quisquam, quod veritatis doloribus mollitia amet
+        accusantium eveniet numquam. Dolores, aliquid, eum ullam quod voluptatum consequatur recusandae officiis
+        repudiandae minima quidem excepturi quaerat esse. A, nemo autem! Tempore dolore sapiente, eveniet quisquam cum
+        odit dicta omnis cumque modi, quam qui sit reiciendis ut repellat in. Minus dignissimos nam laborum
+        reprehenderit soluta assumenda necessitatibus nostrum, repellendus minima consequatur reiciendis distinctio non
+        voluptatem quod quae voluptates fugit culpa ex eos incidunt, hic nihil perspiciatis temporibus explicabo!
+        Veritatis molestiae enim, cumque deserunt exercitationem non culpa nobis adipisci! Sunt a dolorem soluta ducimus
+        ipsam sequi rem debitis, quae incidunt obcaecati quas ullam. Eum quas quae aspernatur quasi pariatur voluptate
+        aperiam quos quidem. Sequi dolorum molestiae error temporibus, enim et, delectus amet est voluptatibus, ullam
+        saepe esse iste hic ducimus modi. Incidunt alias id veritatis exercitationem temporibus quo architecto velit
+        impedit vero, debitis eos eius molestias autem. Non amet, sapiente hic nihil odio officia, dolores officiis eos
+        praesentium cum nesciunt totam? Assumenda autem quos tempore odit quod facilis numquam porro, dicta consequuntur
+        impedit expedita non aperiam, sapiente esse. Atque id ratione magnam, voluptate voluptatibus nobis. Omnis nihil
+        animi doloribus nesciunt quasi voluptates ab vel facilis quas, consequatur molestiae nisi repellat aut
+        praesentium pariatur quam expedita ipsa saepe sed ducimus ut eligendi voluptatibus! Distinctio perspiciatis
+        ullam ducimus officiis odio consequatur fugiat porro repellendus, non qui impedit molestias commodi mollitia
+        illum iure recusandae excepturi quisquam ab eos. Dolor, in eos itaque temporibus, veritatis amet vel, sunt autem
+        porro corrupti maxime? Dolorum pariatur eum qui in! Nisi illum nostrum tempora necessitatibus explicabo
+        veritatis nemo voluptatem exercitationem labore inventore! Deserunt, repudiandae. Est perferendis eius,
+        repudiandae vitae cupiditate quod temporibus laboriosam sunt officia quibusdam consequatur aliquid veniam totam
+        provident?
+    </p>
+</body>
+
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Two-Player Pong Game</title>
+  <style>
+    canvas {
+      background: #111;
+      display: block;
+      margin: 40px auto;
+      border: 3px solid #fff;
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="gameCanvas" width="600" height="400"></canvas>
+
+<script>
+  const canvas = document.getElementById("gameCanvas");
+  const ctx = canvas.getContext("2d");
+
+  // Ball
+  let ballX = canvas.width / 2;
+  let ballY = canvas.height / 2;
+  let ballRadius = 10;
+  let dx = 3;
+  let dy = 3;
+
+  // Paddle dimensions
+  const paddleWidth = 100;
+  const paddleHeight = 10;
+
+  // Player 1 (bottom)
+  let paddle1X = (canvas.width - paddleWidth) / 2;
+  let paddle1Left = false;
+  let paddle1Right = false;
+
+  // Player 2 (top)
+  let paddle2X = (canvas.width - paddleWidth) / 2;
+  let paddle2Left = false;
+  let paddle2Right = false;
+
+  // Key listeners
+  document.addEventListener("keydown", keyDownHandler);
+  document.addEventListener("keyup", keyUpHandler);
+
+  function keyDownHandler(e) {
+    // Player 1 - Arrows
+    if (e.key === "ArrowRight") paddle1Right = true;
+    if (e.key === "ArrowLeft") paddle1Left = true;
+
+    // Player 2 - A & D
+    if (e.key === "d" || e.key === "D") paddle2Right = true;
+    if (e.key === "a" || e.key === "A") paddle2Left = true;
+  }
+
+  function keyUpHandler(e) {
+    if (e.key === "ArrowRight") paddle1Right = false;
+    if (e.key === "ArrowLeft") paddle1Left = false;
+
+    if (e.key === "d" || e.key === "D") paddle2Right = false;
+    if (e.key === "a" || e.key === "A") paddle2Left = false;
+  }
+
+  function drawBall() {
+    ctx.beginPath();
+    ctx.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.closePath();
+  }
+
+  function drawPaddles() {
+    // Player 1 (bottom)
+    ctx.fillStyle = "#00ffcc";
+    ctx.fillRect(paddle1X, canvas.height - paddleHeight - 10, paddleWidth, paddleHeight);
+
+    // Player 2 (top)
+    ctx.fillStyle = "#ffcc00";
+    ctx.fillRect(paddle2X, 10, paddleWidth, paddleHeight);
+  }
+
+  function movePaddles() {
+    // Player 1
+    if (paddle1Right && paddle1X < canvas.width - paddleWidth) paddle1X += 5;
+    if (paddle1Left && paddle1X > 0) paddle1X -= 5;
+
+    // Player 2
+    if (paddle2Right && paddle2X < canvas.width - paddleWidth) paddle2X += 5;
+    if (paddle2Left && paddle2X > 0) paddle2X -= 5;
+  }
+
+  function checkCollisions() {
+    // Bounce off left/right walls
+    if (ballX + dx > canvas.width - ballRadius || ballX + dx < ballRadius) dx = -dx;
+
+    // Bounce off paddle 1 (bottom)
+    if (
+      ballY + dy > canvas.height - paddleHeight - 10 - ballRadius &&
+      ballX > paddle1X &&
+      ballX < paddle1X + paddleWidth
+    ) {
+      dy = -dy;
+    }
+
+    // Bounce off paddle 2 (top)
+    if (
+      ballY + dy < paddleHeight + 10 + ballRadius &&
+      ballX > paddle2X &&
+      ballX < paddle2X + paddleWidth
+    ) {
+      dy = -dy;
+    }
+
+    // Game over for player 1 (missed)
+    if (ballY + dy > canvas.height) {
+      alert("🎮 Player 2 Wins!");
+      document.location.reload();
+    }
+
+    // Game over for player 2 (missed)
+    if (ballY + dy < 0) {
+      alert("🎮 Player 1 Wins!");
+      document.location.reload();
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    drawBall();
+    drawPaddles();
+    movePaddles();
+    checkCollisions();
+
+    ballX += dx;
+    ballY += dy;
+
+    requestAnimationFrame(draw);
+  }
+
+  draw(); // Start game loop
+</script>
+
+</body>
+</html>

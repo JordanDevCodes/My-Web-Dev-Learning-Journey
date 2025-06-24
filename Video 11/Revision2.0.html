@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Website</title>
+    <style>
+        body {
+            background-color: lightsalmon;
+            margin: 20px;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        nav {
+            border: 2px solid;
+            box-shadow: 2px 2px 20px;
+            background-color: yellow;
+            border-radius: 23px;
+            padding: 20px;
+            display: inline-block;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 0;
+            margin: 0;
+            background-color: pink;
+            border-radius: 23px;
+        }
+
+        main {
+            margin: 30px auto;
+            padding: 20px;
+            max-width: 800px;
+        }
+
+        h3 {
+            font-size: 28px;
+            box-shadow: 4px 4px 20px;
+            border-radius: 14px;
+            display: inline-block;
+            padding: 10px 20px;
+        }
+
+        article figure {
+            margin: 30px auto;
+            box-shadow: 2px 2px 20px;
+            border-radius: 19px;
+            padding: 20px;
+            max-width: 90%;
+            background-color: white;
+            text-align: justify;
+        }
+
+        .lorem-box {
+            box-shadow: 2px 2px 20px;
+            border-radius: 19px;
+            padding: 20px;
+            margin: 30px auto;
+            max-height: 400px;
+            overflow-y: auto;
+            text-align: justify;
+            background-color: white;
+            max-width: 90%;
+        }
+
+        footer {
+            margin-top: 50px;
+            background-color: #fff7e6;
+            padding: 20px;
+            border-radius: 14px;
+        }
+
+        @media screen and (max-width: 600px) {
+            h3 {
+                font-size: 22px;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Welcome To My Website</h1>
+        <nav>
+            <ul>
+                <li>Home</li>
+                <li>About</li>
+                <li>Contact</li>
+                <li>Services</li>
+                <li>Blog</li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h3>Let's Talk About Lorem 125</h3>
+        <article>
+            <h4>Why "Lorem Ipsum" is Used ???</h4>
+            <figure>
+                "Lorem Ipsum" is a type of placeholder text commonly used in design,
+                publishing, and web development. It allows designers and developers to
+                focus on the visual layout of a page without being distracted by
+                meaningful content. <br /><br />
+                The text is derived from a scrambled section of Cicero’s Latin text,
+                written in 45 BC. Though it looks like readable text, it’s actually
+                nonsensical, which helps viewers focus on how things look rather than
+                what they say. <br /><br />
+                ✅ Visual Balance <br />
+                ✅ Content Neutral <br />
+                ✅ Fills Space
+            </figure>
+
+            <h5>For Example, Lorem125 Is Given Below</h5>
+            <div class="lorem-box">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt iure sequi nisi enim. Doloremque
+                praesentium impedit assumenda suscipit error dolore ea, id, unde labore distinctio, cum voluptas
+                temporibus quisquam saepe corrupti laboriosam illo quae. Nesciunt iusto reiciendis at sed, ratione
+                reprehenderit totam, molestias maxime, officia perferendis adipisci officiis laudantium repellat quasi
+                natus dolor dolores magni id perspiciatis aspernatur delectus fugiat recusandae quos. Accusantium eius,
+                optio deserunt minus voluptatibus dolores, rerum amet beatae excepturi ex ratione doloribus possimus!
+                Nulla beatae incidunt debitis sed doloribus, soluta, rerum neque esse blanditiis autem a accusantium
+                tenetur iure explicabo deserunt delectus hic maiores, odio unde assumenda culpa? Pariatur iste officiis
+                ipsam qui similique molestias libero dicta eveniet nemo, in consequatur laudantium harum suscipit
+                quisquam omnis aliquam ut mollitia id? Illo?
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <h3>About Us</h2>
+        <p>
+            We are a company dedicated to providing the best services to our
+            customers. Our team is committed to excellence and innovation.
+        </p>
+        <h3>Our Mission</h3>
+        <p>
+            To deliver high-quality products and services that exceed customer
+            expectations.
+        </p>
+        <h3>Contact Us</h3>
+        <p>Email: Kujurcod413@gmail.com</p>
+    </footer>
+</body>
+
+</html>

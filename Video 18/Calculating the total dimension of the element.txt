@@ -1,0 +1,7 @@
+Calculating the total dimension of the element
+The total width and height of the element is calculated with the formula:
+
+Total Width = Width + Left Padding + Right Padding + Left Border + Right Border + Left Margin + Right Margin
+
+Total Height = Height + Top Padding + Bottom Padding + Top Border + Bottom Border + Top Margin + Bottom Margin
+

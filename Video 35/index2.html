@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* *
+        { background-color: black;} */
+        body {
+            background-color: black;
+        }
+
+        .box:first-child {
+            background-color: red;
+        }
+
+        .box::first-letter {
+            color: rgb(1, 202, 44);
+            font-size: 23px;
+        }
+
+        /* .box::first-line{background-color: yellowgreen;} */
+
+        .box::first-line {
+            color: rgb(68, 252, 227);
+        }
+
+        .boxes * {
+            color: rgb(190, 8, 245);
+            border: 2px solid rgb(243, 243, 243);
+        }
+
+        p,
+        a,
+        .box,
+        [data-color="primary"] {
+
+            
+
+            
+            padding-top: 45px;
+        }
+
+        .poxes{ margin-top: 100px;
+            background-color: white;
+        }
+        .pox{border: 2px solid rgb(255, 5, 5); padding: 23px;}
+
+        .pox::first-letter{color: deeppink; font-size: 43px;}
+
+        .pox:nth-child(odd){background-color: rgb(126, 126, 247);}
+        .pox:nth-child(even){background-color: rgb(246, 70, 252);}
+
+        .poxes::before{content: "Jordan Is Good";}
+        .poxes::after{content: "Good Is Jordan"; background-color: red;}
+        .boxes::selection{
+            color: rgb(255, 0, 0); background-color: yellow;
+        }
+        ::selection{
+            color: rgb(255, 0, 0); background-color: yellow;
+        }
+        .boxes input{ width: 233px; height: 80px; color: rgb(248, 124, 0); font-size: 23px; border-radius: 23px;}
+        input::placeholder{color: blue; background-color: green; font-size: 24px; border-radius: 23px;}
+    </style>
+</head>
+
+<body>
+    <div class="boxes">
+        <div data-color="primary" class="box">I am first box</div>
+        <div class="box">Hey i am a box</div>
+        <div class="box">Hey i am a box</div>
+        
+        <br>
+        <label for="text"> Enter your name </label>
+        <br>
+        <input type="text " placeholder="Type your name ">
+    </div>
+
+
+    <div class="poxes">
+        <div class="pox">Hey I am pox
+
+        </div>
+        <div class="pox">Hey I am pox
+
+        </div>
+        <div class="pox">Hey I am pox
+
+        </div>
+        <div class="pox">Hey I am pox
+
+        </div>
+        <div class="pox">Hey I am pox
+
+        </div>
+        <div class="pox">Hey I am pox
+
+        </div>
+        <div class="pox">Hey I am pox
+
+        </div>
+        <div class="pox">Hey I am pox
+
+        </div>
+    </div>
+</body>
+
+</html>

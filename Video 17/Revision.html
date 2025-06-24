@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Selectors</title>
+    <style>
+        body{ text-align: center;}
+        div {
+            display: inline-block;
+            ;
+            background-color: red;
+        }
+
+        .class {
+            background-color: yellow;
+            display: block;
+        }
+
+        #Green {
+            background-color: rgb(76, 255, 76);
+            display: block;
+        }
+
+        div2 > p {
+            background-color: rgb(182, 154, 248); color: white;
+
+        /* padding: 0; margin: 0;} */}
+
+        div > article > p { background-color: black ; color: white;}
+    div p { background-color: blue; color: white;}
+   
+    a:visited {
+            color: green;
+            
+        }
+
+        a:hover {
+            color: red;
+            text-decoration: underline;
+        }
+
+        a:active {
+            color: rgb(255, 208, 0);
+            text-decoration: none;
+            background-color: deeppink;
+        }
+        a:link {
+            color: red;
+            text-decoration: wavy underline;
+        }
+        
+
+        p:first-child {
+            background-color: aqua ; color: red;
+        }
+        p:nth-child(2) {
+            background-color: yellow; color: black;
+        }
+    </style>
+
+    
+</head>
+
+<body>
+
+
+    <div>
+        I am a div
+    </div>
+    <div class="class"> Hey This iS another Div</div>
+    <div id="Green"> I am ID Div</div>
+    <div2 style="background-color: white; margin-top: 100px;">
+        <p> This is a para 1 under a Div</p>
+    </div2>
+<br>
+    <div>
+        <article>
+            <p>
+                This is a Article Tag which is under div Tag
+            </p>
+        </article>
+    </div>
+
+
+
+
+<!-- DECENDENT SELECTOR -->
+
+    <div>
+        <p> This is a para 2u nder a Div</p>
+    </div>
+
+    <div>
+        <article>
+            <p>
+                A representation Of A DECENDENT Tag
+            </p>
+        </article>
+    </div>
+
+    <br>
+    <a href="https://www.google.com"> Go TO Google </a>
+
+<br>
+
+
+<div class="one" style="margin-top: 200px; background-color: white; font-size: 43px;">
+    <p>I am first</p>
+    <p>I am second</p>
+</div>
+
+</body>
+
+</html>

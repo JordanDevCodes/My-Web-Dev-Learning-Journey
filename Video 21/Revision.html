@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>CSS Specificity Explained</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #e0eafc, #cfdef3);
+            color: #333;
+        }
+
+        header {
+            background-color: #004080;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 0;
+            color: #004080;
+        }
+
+        section {
+            margin-top: 30px;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .example-box {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-left: 6px solid #004080;
+            font-size: 1.2rem;
+        }
+
+        .yellow {
+            color: yellow;
+        }
+
+        .cred {
+            color: red !important;
+        }
+
+        .cpurple {
+            color: purple;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Understanding CSS Specificity</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>What is CSS Specificity?</h2>
+            <p>
+                CSS specificity is a set of rules that determines which styles are applied to an element when there are conflicts.
+                It is calculated based on the types of selectors used.
+            </p>
+            <ul>
+                <li>Inline styles (e.g., <code>style=""</code>) have the highest specificity.</li>
+                <li>ID selectors are stronger than class selectors.</li>
+                <li>Class, pseudo-class, and attribute selectors are equal in strength.</li>
+                <li>Element and pseudo-element selectors have the lowest specificity.</li>
+                <li><code>!important</code> overrides everything except other <code>!important</code> rules with higher specificity.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Example</h2>
+            <p>The heading below has multiple class styles and an inline style. Watch which color wins!</p>
+
+            <div class="example-box">
+                <h2 class="yellow cred cpurple" style="color: magenta;">CSS Specificity In Action</h2>
+            </div>
+
+            <p><strong>Explanation:</strong></p>
+            <ul>
+                <li>Inline style <code>style="color:magenta;"</code> has high specificity.</li>
+                <li>But <code>.cred</code> contains <code>!important</code>, which overrides it.</li>
+                <li>So the final color is <span style="color: red; font-weight: bold;">red</span>.</li>
+            </ul>
+        </section>
+    </main>
+
+</body>
+</html>

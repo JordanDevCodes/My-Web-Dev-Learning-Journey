@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Political Theory Quiz</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f7f6;
+    margin: 0; padding: 0;
+    color: #333;
+  }
+  .container {
+    max-width: 800px;
+    margin: 30px auto 60px;
+    background: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.15);
+    border-radius: 12px;
+    padding: 25px 30px 40px;
+  }
+  img.header-image {
+    width: 100%;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+    margin-bottom: 20px;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #2c3e50;
+  }
+  .question {
+    font-weight: 600;
+    margin: 20px 0 12px;
+    font-size: 1.1rem;
+  }
+  .options {
+    list-style: none;
+    padding: 0;
+  }
+  .options li {
+    margin: 8px 0;
+  }
+  label {
+    cursor: pointer;
+    display: block;
+    padding: 10px 15px;
+    background: #ecf0f1;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    border: 2px solid transparent;
+  }
+  input[type="radio"] {
+    margin-right: 10px;
+  }
+  label:hover {
+    background: #d1d8db;
+  }
+  input[type="radio"]:checked + label {
+    border-color: #2980b9;
+    background: #a9cce3;
+  }
+  button {
+    background: #2980b9;
+    color: white;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    cursor: pointer;
+    margin-top: 25px;
+    width: 100%;
+  }
+  button:hover {
+    background: #1f6391;
+  }
+  #score {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-top: 25px;
+    text-align: center;
+    color: #27ae60;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Political_protest_illustration.png/640px-Political_protest_illustration.png"
+    alt="Political Protest"
+    class="header-image"
+  />
+  <h1>Political Theory Quiz</h1>
+
+  <form id="quizForm">
+    <div class="question">
+      1. Meaning, Nature and Significance of Political Theory
+    </div>
+    <ul class="options">
+      <li>
+        <input type="radio" id="q1a" name="q1" value="a" required />
+        <label for="q1a">a) It explains the basics and importance of political theory.</label>
+      </li>
+      <li>
+        <input type="radio" id="q1b" name="q1" value="b" />
+        <label for="q1b">b) It talks about economic systems.</label>
+      </li>
+      <li>
+        <input type="radio" id="q1c" name="q1" value="c" />
+        <label for="q1c">c) It describes ancient history.</label>
+      </li>
+      <li>
+        <input type="radio" id="q1d" name="q1" value="d" />
+        <label for="q1d">d) It studies art and culture.</label>
+      </li>
+    </ul>
+
+    <div class="question">
+      2. Which of these are traditions of Political Theory?
+    </div>
+    <ul class="options">
+      <li>
+        <input type="radio" id="q2a" name="q2" value="a" required />
+        <label for="q2a">a) Liberal and Marxist</label>
+      </li>
+      <li>
+        <input type="radio" id="q2b" name="q2" value="b" />
+        <label for="q2b">b) Capitalist and Socialist</label>
+      </li>
+      <li>
+        <input type="radio" id="q2c" name="q2" value="c" />
+        <label for="q2c">c) Feudal and Tribal</label>
+      </li>
+      <li>
+        <input type="radio" id="q2d" name="q2" value="d" />
+        <label for="q2d">d) Historical and Modern</label>
+      </li>
+    </ul>
+
+    <div class="question">
+      3. Which approach is a normative approach in Political Theory?
+    </div>
+    <ul class="options">
+      <li>
+        <input type="radio" id="q3a" name="q3" value="a" required />
+        <label for="q3a">a) Concerned with what ought to be</label>
+      </li>
+      <li>
+        <input type="radio" id="q3b" name="q3" value="b" />
+        <label for="q3b">b) Based on observable facts</label>
+      </li>
+      <li>
+        <input type="radio" id="q3c" name="q3" value="c" />
+        <label for="q3c">c) Descriptive analysis</label>
+      </li>
+      <li>
+        <input type="radio" id="q3d" name="q3" value="d" />
+        <label for="q3d">d) Empirical evidence collection</label>
+      </li>
+    </ul>
+
+    <div class="question">
+      4. Which of the following is a critical perspective in Political Theory?
+    </div>
+    <ul class="options">
+      <li>
+        <input type="radio" id="q4a" name="q4" value="a" required />
+        <label for="q4a">a) Feminist</label>
+      </li>
+      <li>
+        <input type="radio" id="q4b" name="q4" value="b" />
+        <label for="q4b">b) Liberal</label>
+      </li>
+      <li>
+        <input type="radio" id="q4c" name="q4" value="c" />
+        <label for="q4c">c) Marxist</label>
+      </li>
+      <li>
+        <input type="radio" id="q4d" name="q4" value="d" />
+        <label for="q4d">d) Normative</label>
+      </li>
+    </ul>
+
+    <button type="submit">Submit Quiz</button>
+  </form>
+
+  <div id="score"></div>
+</div>
+
+<script>
+  const correctAnswers = {
+    q1: "a",
+    q2: "a",
+    q3: "a",
+    q4: "a",
+  };
+
+  const quizForm = document.getElementById("quizForm");
+  const scoreDiv = document.getElementById("score");
+
+  quizForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    let score = 0;
+    const formData = new FormData(quizForm);
+
+    for (let [key, value] of formData.entries()) {
+      if (correctAnswers[key] === value) {
+        score++;
+      }
+    }
+
+    scoreDiv.textContent = `Your Score: ${score} / 4`;
+
+    // Scroll to score on submit
+    scoreDiv.scrollIntoView({ behavior: "smooth" });
+  });
+</script>
+
+</body>
+</html>

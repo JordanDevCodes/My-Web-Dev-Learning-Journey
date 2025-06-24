@@ -1,0 +1,8 @@
+h1{ display: inline-block; color: red
+    ; background-color: yellow;}
+    div{ color: greenyellow; background-color: orange; display: inline;}
+    p{ color: orange; background-color: greenyellow; display: inline-block;}
+
+    h3{ color: rgb(255, 5, 59); background-color: lightblue; display: inline-block; text-align: center; }
+
+    h1 , h2 , h3{ border-radius: 19px; box-shadow: 5px 5px 8px black ;}

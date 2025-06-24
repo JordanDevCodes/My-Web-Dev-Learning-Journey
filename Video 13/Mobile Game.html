@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>One Player Paddle Game (Tilt + Keyboard + Buttons)</title>
+  <style>
+    body {
+      background: #111;
+      color: white;
+      text-align: center;
+      font-family: sans-serif;
+      user-select: none;
+      margin: 0;
+      padding: 0;
+    }
+    canvas {
+      display: block;
+      margin: 20px auto;
+      border: 3px solid white;
+      background: #000;
+    }
+    .controls {
+      margin: 10px auto 30px;
+      max-width: 320px;
+    }
+    button {
+      width: 100px;
+      padding: 12px;
+      font-size: 18px;
+      margin: 10px 10px 0 10px;
+      border-radius: 8px;
+      border: none;
+      background: #333;
+      color: white;
+      cursor: pointer;
+      user-select: none;
+    }
+    button:active {
+      background: #555;
+    }
+    h3 {
+      margin: 10px 0 5px;
+    }
+    @media (max-width: 480px) {
+      canvas {
+        width: 100%;
+        height: auto;
+      }
+      button {
+        width: 45%;
+        margin: 5px 2.5% 10px 2.5%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<h2>🎮 One Player Paddle Game</h2>
+
+<canvas id="gameCanvas" width="600" height="400"></canvas>
+
+<div class="controls">
+  <h3>Mobile Controls</h3>
+  <p>Use tilt OR buttons to move paddle</p>
+  <button id="btnLeft">⬅ Move Left</button>
+  <button id="btnRight">Move Right ➡</button>
+</div>
+
+<div class="controls">
+  <h3>PC Controls</h3>
+  <p>Use ← Left and → Right Arrow keys</p>
+</div>
+
+<script>
+  const canvas = document.getElementById("gameCanvas");
+  const ctx = canvas.getContext("2d");
+
+  const ballRadius = 10;
+  const paddleHeight = 12;
+  const paddleWidth = 100;
+
+  let x, y, dx, dy, paddleX;
+
+  // Control states
+  let rightPressed = false;
+  let leftPressed = false;
+  let tiltX = 0; // from accelerometer
+
+  function resetGame() {
+    x = canvas.width / 2;
+    y = canvas.height - 40;
+    dx = 3;
+    dy = -3;
+    paddleX = (canvas.width - paddleWidth) / 2;
+  }
+
+  resetGame();
+
+  // Keyboard events
+  document.addEventListener("keydown", e => {
+    if (e.key === "ArrowRight") rightPressed = true;
+    else if (e.key === "ArrowLeft") leftPressed = true;
+  });
+
+  document.addEventListener("keyup", e => {
+    if (e.key === "ArrowRight") rightPressed = false;
+    else if (e.key === "ArrowLeft") leftPressed = false;
+  });
+
+  // Buttons events
+  document.getElementById("btnLeft").addEventListener("touchstart", () => movePaddle(-20));
+  document.getElementById("btnRight").addEventListener("touchstart", () => movePaddle(20));
+  document.getElementById("btnLeft").addEventListener("mousedown", () => movePaddle(-20));
+  document.getElementById("btnRight").addEventListener("mousedown", () => movePaddle(20));
+
+  // Device tilt event (accelerometer)
+  window.addEventListener('deviceorientation', event => {
+    // event.gamma is left-to-right tilt in degrees, range roughly -90 to 90
+    tiltX = event.gamma || 0;
+    // Clamp tiltX so it's not too extreme
+    if (tiltX > 30) tiltX = 30;
+    if (tiltX < -30) tiltX = -30;
+  });
+
+  function drawBall() {
+    ctx.beginPath();
+    ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.closePath();
+  }
+
+  function drawPaddle() {
+    ctx.beginPath();
+    ctx.rect(paddleX, canvas.height - paddleHeight - 20, paddleWidth, paddleHeight);
+    ctx.fillStyle = "#00ffcc";
+    ctx.fill();
+    ctx.closePath();
+  }
+
+  function movePaddle(distance) {
+    paddleX += distance;
+    if (paddleX < 0) paddleX = 0;
+    if (paddleX + paddleWidth > canvas.width) paddleX = canvas.width - paddleWidth;
+  }
+
+  let animationId;
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    drawBall();
+    drawPaddle();
+
+    // Move paddle based on keyboard input
+    if (rightPressed) {
+      movePaddle(5);
+    }
+    if (leftPressed) {
+      movePaddle(-5);
+    }
+
+    // Move paddle based on tilt
+    // tiltX > 0 means tilted right, < 0 means left
+    if (Math.abs(tiltX) > 2) { // small threshold to avoid jitter
+      movePaddle(tiltX / 3); // divide to reduce sensitivity
+    }
+
+    // Ball collision with walls
+    if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
+      dx = -dx;
+    }
+    if (y + dy < ballRadius) {
+      dy = -dy;
+    } else if (y + dy > canvas.height - ballRadius - paddleHeight - 20) {
+      if (x > paddleX && x < paddleX + paddleWidth) {
+        dy = -dy;
+      } else {
+        cancelAnimationFrame(animationId);
+        alert("Game Over!");
+        resetGame();
+        animationId = requestAnimationFrame(draw);
+        return;
+      }
+    }
+
+    x += dx;
+    y += dy;
+
+    animationId = requestAnimationFrame(draw);
+  }
+
+  draw();
+</script>
+
+</body>
+</html>
