@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UltraEdit Navbar</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+    }
+
+    .logo img {
+      width: 200px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links li {
+      color: #555;
+      font-size: 17px;
+      cursor: pointer;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .buy-now {
+      border: 2px solid black;
+      padding: 6px 14px;
+      font-weight: bold;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .language {
+      font-size: 16px;
+      color: #555;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <!-- Logo -->
+    <div class="logo">
+      <img src="https://www.ultraedit.com/wp-content/uploads/2023/01/Background-2.png" alt="UltraEdit Logo">
+    </div>
+
+    <!-- Center navigation links -->
+    <ul class="nav-links">
+      <li>Products</li>
+      <li>Pricing</li>
+      <li>Resources</li>
+      <li>Our Company</li>
+    </ul>
+
+    <!-- Right-side actions -->
+    <div class="nav-actions">
+      <div class="buy-now">Buy Now</div>
+      <div class="language">English</div>
+    </div>
+  </nav>
+
+</body>
+</html>
