@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css Grid</title>
+    <style>
+        .container{
+            display: grid;
+            /* grid-template-columns: 120px 100px 100px ; */
+            /* grid-template-columns: [pehla]120px [dushra]100px [teesra]100px ; */
+            border: 2px solid rgb(0, 0, 0);
+           row-gap: 10px
+            ;
+            width: 80vh;
+            height: 100vh;
+            gap: 23px
+            ;
+            row-gap: 50px
+            ;
+            
+            grid-template-columns: 1fr 1fr 1fr 1fr  ;
+            /* grid-template-columns: repeat(4, 1fr); */
+            justify-items: center ;
+            align-items: center;
+        }
+
+        .item{
+             /* margin-top: 10px;
+            margin-bottom: 10px; */
+            border: 2px solid red;
+            height: 55px;
+            width: 55px;
+            
+        }
+        /* .item4 {
+            /* grid-row: 1/5; */
+            /* grid-row: dushra/5;
+            grid-column: 3/4
+            ;
+            width: auto;
+            height: auto; */
+        /* } */ */
+        
+        .item1 {
+            /* grid-row: 3/5; */
+            /* grid-column: 1/3 */
+            grid-column: pehla/3
+            ;
+            height: auto;
+            width: auto;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <h1>
+        We can use grid row end or start instead of grid-row and same with the  grid-column
+    </h1>
+    <div class="container">
+        <div class="item item1">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item item4">4</div>
+        <div class="item">5</div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+
+    <h1>
+        Place-content can be used un the place of justify-items and align-content 
+    </h1>
+</body>
+</html>
