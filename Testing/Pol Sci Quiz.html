@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Political Theory Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+    h2 {
+      color: #2c3e50;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    .option {
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    #result {
+      font-weight: bold;
+      margin-top: 20px;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Political Theory Quiz</h2>
+<div id="quiz-container">
+  <div id="question-container" class="question"></div>
+  <div id="options-container"></div>
+  <button onclick="nextQuestion()">Next</button>
+  <div id="result"></div>
+</div>
+
+<script>
+  const quiz = [
+    {
+      question: "1. What does political theory primarily study?",
+      options: ["Political events", "Political institutions", "Ideas and principles", "Voting patterns"],
+      answer: 2
+    },
+    {
+      question: "2. What is the main focus of normative political theory?",
+      options: ["Describing systems", "Predicting behavior", "Prescribing values", "Analyzing data"],
+      answer: 2
+    },
+    {
+      question: "3. Which of the following is a key concern of political theory?",
+      options: ["Military strategy", "Moral justification of power", "Taxation policy", "Trade agreements"],
+      answer: 1
+    },
+    {
+      question: "4. Which thinker is associated with liberal political theory?",
+      options: ["Karl Marx", "John Locke", "Vladimir Lenin", "Rosa Luxemburg"],
+      answer: 1
+    },
+    {
+      question: "5. Marxist theory focuses primarily on:",
+      options: ["Individual freedom", "Capitalism critique", "Cultural diversity", "Religious values"],
+      answer: 1
+    },
+    {
+      question: "6. What is a central tenet of liberalism?",
+      options: ["Class struggle", "Collectivism", "Individual rights", "Dictatorship of the proletariat"],
+      answer: 2
+    },
+    {
+      question: "7. Marxism views history through the lens of:",
+      options: ["Cultural exchange", "Technological change", "Class conflict", "Geopolitics"],
+      answer: 2
+    },
+    {
+      question: "8. The normative approach to political theory asks:",
+      options: ["What is?", "Why is?", "What ought to be?", "What will happen?"],
+      answer: 2
+    },
+    {
+      question: "9. Empirical approach focuses on:",
+      options: ["Moral values", "Ideal forms", "Observable facts", "Religious teachings"],
+      answer: 2
+    },
+    {
+      question: "10. A major critique of normative theory is that:",
+      options: ["It's too scientific", "It lacks ideals", "It's overly focused on data", "It's too abstract"],
+      answer: 3
+    },
+    {
+      question: "11. Empirical political theory aims to:",
+      options: ["Promote socialism", "Describe political phenomena", "Judge leaders", "Establish utopias"],
+      answer: 1
+    },
+    {
+      question: "12. Which is a feminist concern in political theory?",
+      options: ["Economic planning", "Electoral reform", "Gender equality", "Trade regulations"],
+      answer: 2
+    },
+    {
+      question: "13. Feminist theory critiques traditional political theory for:",
+      options: ["Being too empirical", "Ignoring gendered experiences", "Focusing on justice", "Emphasizing equality"],
+      answer: 1
+    },
+    {
+      question: "14. Post-modern political theory emphasizes:",
+      options: ["Universal truths", "Objective science", "Multiplicity of perspectives", "Fixed ideologies"],
+      answer: 2
+    },
+    {
+      question: "15. One key idea of post-modernism is:",
+      options: ["Hierarchy", "Meta-narratives", "Certainty", "Skepticism of absolutes"],
+      answer: 3
+    },
+    {
+      question: "16. Liberalism supports:",
+      options: ["Free markets", "State control", "Collective ownership", "Monarchy"],
+      answer: 0
+    },
+    {
+      question: "17. Marxism critiques capitalism for:",
+      options: ["Promoting equality", "Creating wealth", "Exploiting workers", "Encouraging innovation"],
+      answer: 2
+    },
+    {
+      question: "18. Normative theory seeks to:",
+      options: ["Interpret laws", "Prescribe ethical standards", "Analyze behavior", "Report data"],
+      answer: 1
+    },
+    {
+      question: "19. Empirical political theory is most likely to:",
+      options: ["Use surveys", "Debate justice", "Argue morality", "Support ideology"],
+      answer: 0
+    },
+    {
+      question: "20. Feminist theorists argue that politics has been:",
+      options: ["Gender-neutral", "Male-dominated", "Well-balanced", "Class-based only"],
+      answer: 1
+    },
+    {
+      question: "21. A feminist political agenda includes:",
+      options: ["Patriarchy", "Privatization", "Gender justice", "Nationalism"],
+      answer: 2
+    },
+    {
+      question: "22. Post-modernists are skeptical of:",
+      options: ["Relativism", "Power structures", "Grand theories", "Decentralization"],
+      answer: 2
+    },
+    {
+      question: "23. John Stuart Mill is a key thinker in:",
+      options: ["Marxism", "Liberalism", "Anarchism", "Totalitarianism"],
+      answer: 1
+    },
+    {
+      question: "24. The idea of 'freedom from interference' is central to:",
+      options: ["Positive liberty", "Negative liberty", "Social justice", "Economic freedom"],
+      answer: 1
+    },
+    {
+      question: "25. Which method is most associated with empirical theory?",
+      options: ["Observation", "Speculation", "Normative debate", "Moral reasoning"],
+      answer: 0
+    },
+    {
+      question: "26. Simone de Beauvoir is linked with:",
+      options: ["Liberalism", "Marxism", "Post-modernism", "Feminism"],
+      answer: 3
+    },
+    {
+      question: "27. Post-modernists believe truth is:",
+      options: ["Absolute", "Objective", "Constructed", "Infallible"],
+      answer: 2
+    },
+    {
+      question: "28. Political theory helps us:",
+      options: ["Farm effectively", "Wage wars", "Understand political ideas", "Build highways"],
+      answer: 2
+    },
+    {
+      question: "29. According to Marx, state represents:",
+      options: ["Common good", "Neutral referee", "Instrument of class rule", "Religious authority"],
+      answer: 2
+    },
+    {
+      question: "30. A major feminist critique is that political theory often ignores:",
+      options: ["Economic class", "Religion", "Masculine bias", "National interest"],
+      answer: 2
+    }
+  ];
+
+  let currentQuestion = 0;
+  let score = 0;
+
+  function loadQuestion() {
+    const q = quiz[currentQuestion];
+    document.getElementById("question-container").textContent = q.question;
+    const optionsHtml = q.options.map((opt, idx) =>
+      `<div class="option"><label><input type="radio" name="option" value="${idx}"> ${opt}</label></div>`
+    ).join("");
+    document.getElementById("options-container").innerHTML = optionsHtml;
+    document.getElementById("result").textContent = "";
+  }
+
+  function nextQuestion() {
+    const selected = document.querySelector('input[name="option"]:checked');
+    if (!selected) {
+      alert("Please select an option.");
+      return;
+    }
+    const answer = parseInt(selected.value);
+    if (answer === quiz[currentQuestion].answer) {
+      score++;
+    }
+    currentQuestion++;
+    if (currentQuestion < quiz.length) {
+      loadQuestion();
+    } else {
+      document.getElementById("quiz-container").innerHTML = `<h2>Your Score: ${score} / ${quiz.length}</h2>`;
+    }
+  }
+
+  loadQuestion();
+</script>
+</body>
+</html>
