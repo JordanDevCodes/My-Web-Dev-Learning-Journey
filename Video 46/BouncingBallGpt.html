@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bouncing Ball Animation</title>
+  <style>
+    canvas {
+      background-color: #f0f0f0;
+      display: block;
+      margin: auto;
+      margin-top: 50px;
+      border: 2px solid #333;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="myCanvas" width="800" height="400"></canvas>
+
+  <script>
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+
+    let x = 50;         // Starting X position
+    let y = 300;        // Starting Y position
+    let vx = 2;         // Velocity in X
+    let vy = -10;       // Initial jump velocity
+    let gravity = 0.5;  // Gravity
+    let bounce = 0.7;   // Energy loss on bounce
+    let radius = 20;    // Radius of the ball
+
+    function drawBall() {
+      ctx.beginPath();
+      ctx.arc(x, y, radius, 0, Math.PI * 2);
+      ctx.fillStyle = "crimson";
+      ctx.fill();
+      ctx.closePath();
+    }
+
+    function update() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      drawBall();
+
+      // Update position
+      x += vx;
+      y += vy;
+
+      // Apply gravity
+      vy += gravity;
+
+      // Bounce off the floor
+      if (y + radius > canvas.height) {
+        y = canvas.height - radius;
+        vy *= -bounce;
+
+        // Stop bouncing if very small
+        if (Math.abs(vy) < 1) vy = -10;
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    update();
+  </script>
+</body>
+</html>

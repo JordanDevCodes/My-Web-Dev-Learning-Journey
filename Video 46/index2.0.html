@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Bouncing Ball</title>
+  <style>
+    body {
+      margin: 0;
+      background: #e0f7fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 90vw;
+      height: 80vh;
+      background: #c8e6c9;
+      position: relative;
+      overflow: hidden;
+      border: 3px solid #4caf50;
+    }
+
+    .ball {
+      width: 40px;
+      height: 40px;
+      background: crimson;
+      border-radius: 50%;
+      position: absolute;
+      bottom: 0;
+      animation: bounce 3s ease-in-out infinite, moveX 6s linear infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      25% {
+        transform: translateY(-120px);
+      }
+      50% {
+        transform: translateY(0);
+      }
+      75% {
+        transform: translateY(-80px);
+      }
+    }
+
+    @keyframes moveX {
+      0% {
+        left: 0;
+      }
+      100% {
+        left: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="ball"></div>
+  </div>
+</body>
+</html>

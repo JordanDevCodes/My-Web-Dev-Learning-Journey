@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exercise 8</title>
+  <style>
+    body {
+      background-color: grey;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+
+    h1 {
+      border-radius: 13px;
+      text-shadow: 2px 2px 6px white;
+      color: white;
+    }
+
+    .container {
+      border: 2px solid silver;
+      box-shadow: 5px 5px 20px;
+      height: 40vh;
+      width: 80vw;
+      background-color: yellow;
+      overflow: hidden;
+      display: flex;
+      align-items: end;
+      position: relative;
+    }
+
+    .ball-wrapper {
+      position: absolute;
+      bottom: 0;
+      animation: moveHorizontally 4s linear infinite;
+    }
+
+    .ball {
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      border: 1px solid white;
+      border-radius: 50%;
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+      animation: bounceVertically 0.6s ease-in-out infinite;
+    }
+
+    @keyframes moveHorizontally {
+      0% { transform: translateX(0vw); }
+      100% { transform: translateX(80vw); }
+    }
+
+    @keyframes bounceVertically {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-100px); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Bouncing Ball Animation</h1>
+  <div class="container">
+    <div class="ball-wrapper">
+      <div class="ball"></div>
+    </div>
+  </div>
+</body>
+</html>
